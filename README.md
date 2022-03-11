@@ -20,3 +20,5 @@ by others
   - description
   - recipe: an ordered list of ingredients with their volumes for this cocktail
 - An ability to rate cocktails (1-5 stars rating system) and leave a comment
+
+### Wireframe link: *https://www.figma.com/file/I7P8XK33gmkuGPebore8uL/Untitled?node-id=0%3A1*
