@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gelasio&display=swap');
 
 :root {
     --primary-background-color: #F9F4EF;
     --primary-text-color: #716040;
     --light-grey-color: #CCC;
     --main-border-radius: 30px;
+    --primary-font-size: 1.2em;
+    --primary-font-size-sm: 1.1em;
   }
   
   * {
@@ -15,8 +18,7 @@
   
   main {
     min-height: calc(100vh - 60px);
-    padding-top: 100px;
-    padding-bottom: 50px;
+    padding: 150px 0 50px;
     box-sizing: border-box;
   }
   
@@ -30,6 +32,19 @@
     font-size: 0.96em;
   }
   
+  .fa-star {
+    color: white;
+    text-shadow: 0 0 3px #000;
+  }
+
+  .bars-icon {
+    display: none;
+  }
+  
+  .checked {
+    color: #FFFF00;
+  }
+  
   .hidden {
     display: none;
   }
@@ -39,12 +54,27 @@
     cursor: pointer;
   }
 
+  p {
+    font-family: 'Gelasio';
+  }
+
   .header-left-title a {
     color: var(--primary-text-color);
   }
   
   ul {
     list-style: none;
+  }
+
+  button:active {
+    transform: scale(0.98);
+  }
+
+  input, select, button {
+    text-align: center;
+    font-family: 'Gelasio', serif;
+    background-color: var(--primary-background-color);
+    border-radius: var(--input-border-radius);
   }
 
   .italic-font {
@@ -72,16 +102,18 @@
   
   .menu-list {
     position: absolute;
-    top: 50px;
-    padding-top: 35px;
+    top: 25px;
+    right: 10px;
+    width: 650px;
+    font-family: 'Gelasio';
+    justify-content: space-evenly;
   }
   
   .menu-list li {
-    display: block;
     line-height: 60px;
+    padding-right: 13px;
     background-color: var(--primary-background-color);
     font-size: 2em;
-    width: 250px;
     transition: all 300ms ease;
   }
   
@@ -97,22 +129,20 @@
     color: var(--primary-background-color);
     background-color: var(--primary-text-color);
   }
-  
-  .main-menu:hover .menu-list {
-    display: block;
+
+  .main-menu .menu-list {
+    display: flex;
   }
   
-  #logout-link {
+  #logout-link, #create-link{
     display: none;
   }
   
-  /* HEADER END */
-  
-  /* FOOTER */
   footer {
     box-sizing: border-box;
     width: 100%;
     height: 60px;
+    z-index: 2;
     background-color: var(--primary-text-color);
     min-width: 650px;
     padding: 0 50px;
@@ -126,44 +156,68 @@
     margin-left: 0;
     margin-right: auto;
   }
-  /* FOOTER END*/
-  
-  /* FOR SMARTPHONES*/
-  @media only screen and (max-device-width : 500px) {
-  
-      main {
-        padding-top: 150px;
-        padding-bottom: 100px;
-      }
-  
-      h1 {
-        font-size: 3.7em;
-      }
-  
-      header {
-        padding: 20px 50px;
-      }
-  
-      footer {
-        position: fixed;
-        z-index: 10;
-        left: 0;
-        bottom: 0;
-        height: 80px;
-        font-size: 1.5em;
-      }
-  
-      .menu-list {
-        top: 80px;
-        padding-top: 48px;
-      }
-  
-      .menu-list li {
-        display: block;
-        padding: 20px;
-        background-color: var(--primary-background-color);
-        font-size: 3em;
-        width: 430px;
-      }
+
+  @media only screen and (max-device-width : 550px) {
+    :root {
+      --primary-font-size: 2.5em;
+      --primary-font-size-sm: 2.1em;
+    }
+    
+    main {
+      padding: 180px 0 100px;
+    }
+
+    h1 {
+      font-size: 3.7em;
+    }
+
+    header {
+      padding: 20px 50px;
+    }
+
+    header .header-left-title {
+      font-size: 24px;
+    }
+
+    footer {
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      bottom: 0;
+      height: 80px;
+      font-size: 1.5em;
+    }
+
+    .bars-icon {
+      display: inline;
+    }
+
+    .menu-list {
+      top: 89px;
+      padding-top: 48px;
+      left: 50px;
+    }
+
+    .main-menu .menu-list {
+      display: none;
+    }
+    
+    .main-menu:hover .menu-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-list li {
+      display: block;
+      padding: 20px;
+      background-color: var(--primary-background-color);
+      font-size: 3em;
+      width: 430px;
+    }
+
+    .grid-item-rating {
+      font-size: 2.5em;
+      padding: 20px;
+    }
   }
   
