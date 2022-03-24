@@ -78,6 +78,15 @@
     border-radius: var(--input-border-radius);
   }
 
+  input, textarea {
+    border: 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  }
+
+  input:focus, textarea:focus {
+    outline: none;
+  }
+
   .italic-font {
     font-family: 'Dancing Script', cursive;
   }

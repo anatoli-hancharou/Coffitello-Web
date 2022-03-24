@@ -20,8 +20,8 @@
   height: 220px;
   background-color: var(--primary-background-color);
   border-radius: var(--main-border-radius);
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
   display: flex;
-  border: solid var(--border-color);
   justify-content: center;
   align-items: center;
   flex-direction: column;

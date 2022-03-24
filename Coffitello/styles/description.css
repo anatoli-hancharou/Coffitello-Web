@@ -19,7 +19,7 @@
   margin: 0 auto;
   width: 50%;
   padding: 20px;
-  border: 2px solid var(--border-color);
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.3);
   border-radius: var(--main-border-radius);
 }
 
@@ -43,7 +43,7 @@
   padding: 15px;
   font-size: var(--primary-font-size-sm);
   text-align: center;
-  border: 2px solid var(--border-color);
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.4);
   border-radius: var(--main-border-radius);
 }
 
@@ -69,6 +69,7 @@
 }
 
 #coctail-info-btn {
+  border-radius: 50%;
   display: none;
   left: 15px;
   background-image: url( '../icons/information.png' );
@@ -120,7 +121,7 @@
 
 .comments-list-item {
   padding: 10px 15px;
-  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
   border-radius: var(--main-border-radius);
 }
 
@@ -208,7 +209,7 @@
     position: fixed;
     display: block;
     top: 195px;
-    left: 35px;
+    left: 60px;
     z-index: 10;
   }
 }
