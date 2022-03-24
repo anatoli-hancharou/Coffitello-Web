@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Gelasio&display=swap');
+
+:root {
+  --primary-background-color: #F9F4EF;
+  --primary-text-color: #716040;
+  --border-color: #020826;
+  --main-border-radius: 30px;
+  --input-border-radius: 5px;
+  --primary-font-size: 1.2em;
+  --primary-font-size-sm: 1.1em;
+}
+
+.create-drink-form {
+  font-family: 'Gelasio', serif;
+  margin: 0 auto;
+  width: 60%;
+}
+
+.create-block {
+  display: flex;
+  justify-content: center;
+  min-height: 120px;
+}
+
+.choose-ingredients-block {
+  display: flex;
+  min-height: 300px;
+}
+
+.choose-block {
+  flex: 1 1 0px;
+  padding: 15px;
+  box-sizing: border-box;
+  border: 2px solid var(--border-color);
+  border-radius: var(--main-border-radius);
+}
+
+#choose-category-block {
+  margin: 10px 10px 0 0;
+}
+
+#choose-ingredient-block {
+  margin-top: 10px;
+}
+
+#ingredients-values-block {
+  margin: 10px 0 0 10px;
+}
+
+.list-item {
+  padding: 4px;
+  border-radius: var(--input-border-radius);
+  font-size: var(--primary-font-size-sm);
+}
+
+.choose-category-list-item:hover, .choose-ingredient-list-item:hover {
+  background: var(--primary-text-color);
+  color: var(--primary-background-color);
+}
+
+.ingredient-value {
+  float: right;
+}
+
+.drink-description-block {
+  display: flex;
+  border: 2px solid var(--border-color);
+  border-radius: var(--main-border-radius);
+}
+
+.coctail-image-block {
+  margin: 0 auto;
+  padding: 20px;
+  width: auto;
+}
+
+.description-block {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 80%;
+}
+
+#drink-name {
+  width: 60%;
+}
+
+.form-gorup {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+input {
+  box-sizing: border-box;
+  border-width: 2px;
+  padding: 3px 5px;
+}
+
+textarea {
+  font-family: 'Gelasio', serif;
+  box-sizing: border-box;
+  border-width: 2px;
+  background-color: var(--primary-background-color);
+  border-radius: var(--input-border-radius);
+}
+
+.input-label {
+  width: 110px;
+  margin-right: 50px;
+  font-size: var(--primary-font-size);
+  color: var(--border-color);
+}
+
+input[type='number']::-webkit-inner-spin-button, 
+input[type='number']::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#drink-description-textarea {
+  width: 60%;
+  min-height: 80px;
+  padding: 5px;
+  font-size: var(--primary-font-size-sm);
+  box-sizing: border-box;
+  resize: none;
+}
+
+#drink-value, #drink-name {
+  font-size: var(--primary-font-size-sm);
+}
+
+#create-drink-btn {
+  border: none;
+  display: block;
+  margin: 15px auto;
+  padding: 3px 15px;
+  font-size: var(--primary-font-size);
+  transition: transform 150ms ease;
+  background: var(--primary-text-color);
+  color: var(--primary-background-color);
+}
+
+@media only screen and (max-device-width : 1200px) {
+  .create-drink-form {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-device-width : 1000px) {
+  .create-drink-form {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-device-width : 550px) {
+  :root {
+    --input-border-radius: 15px;
+    --primary-font-size: 2.5em;
+    --primary-font-size-sm: 2.1em;
+  }
+  .create-drink-form {
+    width: 70%;
+    border: none;
+  }
+
+  .coctail-image-block {
+    height: 250px;
+    width: auto;
+  }
+
+  .coctail-image-block img {
+    height: 100%;
+  }
+
+  .drink-description-block {
+    flex-direction: column;
+    border: none;
+  }
+
+  .description-block {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--main-border-radius);
+  }
+
+  .create-block {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  #choose-category-block, #choose-ingredient-block, #ingredients-values-block {
+    margin: 0 0 10px 0;
+  }
+
+  .choose-block {
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+
+  .form-gorup {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #drink-value {
+    width: 30%;
+  }
+
+  #drink-name {
+    width: 80%;
+  }
+
+  #drink-description-textarea {
+    width: 90%;
+  }
+
+  .input-label {
+    width: auto;
+    margin-right: 0px;
+  }
+
+  .list-item {
+    margin-bottom: 10px;
+  }
+
+  .ingredient-value {
+    font-size: inherit;
+  }
+
+  .choose-ingredients-block {
+    flex-direction: column;
+  }
+
+}

@@ -52,10 +52,11 @@
   a {
     text-decoration: none;
     cursor: pointer;
+    color: inherit;
   }
 
   p {
-    font-family: 'Gelasio';
+    font-family: 'Gelasio', serif;
   }
 
   .header-left-title a {
