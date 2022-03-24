@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+
+:root {
+  --primary-background-color: #F9F4EF;
+  --primary-text-color: #716040;
+  --border-color: #020826;
+  --main-border-radius: 30px;
+  --input-border-radius: 5px;
+  --primary-font-size: 1.2em;
+  --primary-font-size-sm: 1.1em;
+}
+
+#coctail-info-block, #comment-section {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Gelasio', serif;
+  margin: 0 auto;
+  width: 50%;
+  padding: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--main-border-radius);
+}
+
+#comment-section {
+  margin: 20px auto;
+}
+
+#coctail-info-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 350px;
+  width: 15%;
+  position: fixed;
+  z-index: -1;
+  top: 150px;
+  left: 15px;
+  background-color: var(--primary-background-color);
+  overflow-x: hidden;
+  padding: 15px;
+  font-size: var(--primary-font-size-sm);
+  text-align: center;
+  border: 2px solid var(--border-color);
+  border-radius: var(--main-border-radius);
+}
+
+#coctail-name {
+  font-size: 1.8em;
+  font-family: 'Dancing Script', cursive;
+}
+
+#coctail-description {
+  font-size: 1.8em;
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#mark-favourite-btn, #coctail-info-btn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-size: 50px 50px;
+  background-color: var(--primary-background-color);
+}
+
+#coctail-info-btn {
+  display: none;
+  left: 15px;
+  background-image: url( '../icons/information.png' );
+}
+
+#mark-favourite-btn {
+  right: 15px;
+  background-image: url( '../icons/empty-heart.png' );
+}
+
+.grid-item-rating {
+  border-radius: 15px;
+  padding: 7px;
+  margin: 0 auto 5px;
+  width: auto;
+  text-align: center;
+}
+
+#comment-form {
+  width: 70%;
+}
+
+#comment-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  background-color: var(--primary-background-color);
+  font-size: 1.3em;
+  border-radius: 20px;
+  box-sizing: border-box;
+  display: block;
+  resize: none;
+}
+
+#add-comment-btn {
+  float: right;
+  border: none;
+  margin: 15px auto;
+  padding: 3px 15px;
+  font-size: var(--primary-font-size);
+  transition: transform 150ms ease;
+  background: var(--primary-text-color);
+  color: var(--primary-background-color);
+}
+
+#comments-list {
+  width: 70%;
+}
+
+.comments-list-item {
+  padding: 10px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--main-border-radius);
+}
+
+.comment-wrapper {
+  display: flex;
+  height: auto;
+  overflow: hidden;
+  font-size: var(--primary-font-size-sm);
+}
+
+.comment-info {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+#ingredients-list, #down-info {
+  margin-top: 20px;
+}
+
+.ingredients-list-item {
+  margin: 5px auto;
+}
+
+#down-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (max-device-width : 550px) {
+  :root {
+    --input-border-radius: 15px;
+    --primary-font-size: 2.5em;
+    --primary-font-size-sm: 2.1em;
+  }
+
+  #coctail-info-block {
+    border: none;
+  }
+
+  #coctail-info-block, #comment-section {
+    width: 85%;
+  }
+
+  #coctail-description {
+    font-size: 3.5em;
+  }
+
+  #coctail-name {
+    font-size: 4em;
+  }
+
+  #coctail-info-sidebar {
+    display: none;
+    z-index: 10;
+    top: 285px;
+    width: 80%;
+  }
+
+  .coctail-image-block {
+    height: 250px;
+    width: auto;
+  }
+
+  .coctail-image-block img {
+    height: 100%;
+  }
+
+  #comments-list, #comment-form {
+    width: 95%;
+  }
+
+  #comment-textarea {
+    font-size: 2.7em;
+  }
+
+  #mark-favourite-btn, #coctail-info-btn {
+    width: 90px;
+    height: 90px;
+    background-size: 90px 90px;
+  }
+
+  #coctail-info-btn {
+    position: fixed;
+    display: block;
+    top: 195px;
+    left: 35px;
+    z-index: 10;
+  }
+}
