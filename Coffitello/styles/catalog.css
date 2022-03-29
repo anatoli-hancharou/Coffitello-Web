@@ -17,7 +17,7 @@
 }
 
 .catalog-item {
-  height: 220px;
+  height: 250px;
   background-color: var(--primary-background-color);
   border-radius: var(--main-border-radius);
   box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
@@ -72,13 +72,13 @@
     }
 
     .catalog-item {
-       height: 400px; 
+      min-height: 450px; 
       padding: 30px;
       border-radius: 100px;
     }
 
     .coctail-image {
-      height: 350px;
+      height: 270px;
       padding-bottom: 10px;
     }
 

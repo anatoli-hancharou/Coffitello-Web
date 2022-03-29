@@ -71,7 +71,8 @@
     transform: scale(0.98);
   }
 
-  input, select, button {
+  input, button {
+    box-sizing: border-box;
     text-align: center;
     font-family: 'Gelasio', serif;
     background-color: var(--primary-background-color);
@@ -80,6 +81,7 @@
 
   input, textarea {
     border: 0;
+    -webkit-appearance: none;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
   }
 

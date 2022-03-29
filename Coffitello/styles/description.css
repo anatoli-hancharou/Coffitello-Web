@@ -155,12 +155,13 @@
 @media only screen and (max-device-width : 550px) {
   :root {
     --input-border-radius: 15px;
-    --primary-font-size: 2.5em;
-    --primary-font-size-sm: 2.1em;
+    --primary-font-size: 2.7em;
+    --primary-font-size-sm: 2.3em;
   }
 
   #coctail-info-block {
     border: none;
+    box-shadow: none;
   }
 
   #coctail-info-block, #comment-section {
@@ -196,7 +197,7 @@
   }
 
   #comment-textarea {
-    font-size: 2.7em;
+    font-size: 3em;
   }
 
   #mark-favourite-btn, #coctail-info-btn {
@@ -211,5 +212,9 @@
     top: 195px;
     left: 60px;
     z-index: 10;
+  }
+
+  #add-comment-btn {
+    padding: 15px 45px;
   }
 }
