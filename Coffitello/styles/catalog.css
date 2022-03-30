@@ -9,8 +9,8 @@
 .catalog-grid {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, 170px);
-  column-gap: 50px;
+  grid-template-columns: repeat(auto-fit, 225px);
+  column-gap: 30px;
   row-gap: 25px;
   height: 100%;
   padding: 0 30px;
@@ -57,6 +57,7 @@
 
 .coctail-title {
   color: var(--primary-text-color);
+  overflow: hidden;
   text-overflow: ellipsis;
   width: 100%;
   white-space: nowrap;
@@ -67,8 +68,9 @@
 @media only screen and (max-device-width : 550px) {
 
     .catalog-grid {
-      grid-template-columns: repeat(auto-fit, 400px);
-      row-gap: 20px;
+      grid-template-columns: repeat(auto-fit, 440px);
+      row-gap: 35px;
+      column-gap: 40px;
     }
 
     .catalog-item {
