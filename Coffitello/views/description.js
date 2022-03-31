@@ -1,5 +1,4 @@
-export const description = `
-<link rel="stylesheet" href="styles/description.css">
+export const descriptionSection = `
 <aside id="coctail-info-sidebar">
   <p>Value: <span>250</span> ml.</p>
   <ul id="ingredients-list">

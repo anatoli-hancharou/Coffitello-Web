@@ -1,5 +1,4 @@
-export const favorite = `
-<link rel="stylesheet" href="styles/favorite.css">
+export const favoriteSection = `
 <section id="favorites-section">
   <ul id="favorites-list">
     <li class="favorites-list-item">

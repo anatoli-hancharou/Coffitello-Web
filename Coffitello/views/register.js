@@ -1,5 +1,4 @@
-export const register = `
-<link rel="stylesheet" href="styles/login.css">
+export const registerSection = `
 <section class="login-form">
   <h2>Registration</h2>
   <form action="">

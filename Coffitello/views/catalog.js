@@ -1,4 +1,4 @@
-export const catalog = `
+export const catalogSection = `
 <section class="catalog-grid" id="catalog-grid">
   <a href="#">
     <div class="catalog-item">

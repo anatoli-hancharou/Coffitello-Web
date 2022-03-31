@@ -1,18 +1,7 @@
-import { onNavigate, addContent } from "./router.js"
+import { onNavigate } from "../services/router.js";
+import { authService } from "../services/auth.js";
 
 function setEventListeners() {
-    window.onpopstate = () => {
-        addContent(window.location.pathname);
-    };
-
-    window.onload = () => {
-        addContent(window.location.pathname);
-    };
-
-    window.onhashchange = () => {
-        addContent(window.location.pathname);
-    };
-
     const catalogLink = document.querySelector('#catalog-link a');
     const createLink = document.querySelector('#create-link a');
     const signupLink = document.querySelector('#signup-link a');
@@ -36,7 +25,7 @@ function setEventListeners() {
     });
 
     logoutLink.addEventListener("click", (e) => {
-        authService.logOut();
+        authService.signOut();
         e.preventDefault();
     });
 

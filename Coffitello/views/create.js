@@ -1,5 +1,4 @@
-export const create = `
-<link rel="stylesheet" href="styles/create-drink.css">
+export const createSection = `
 <form class="create-drink-form" action="">
   <div class="drink-description-block">
     <div class="coctail-image-block">

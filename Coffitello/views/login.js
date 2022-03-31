@@ -1,5 +1,4 @@
-export const login = `
-<link rel="stylesheet" href="styles/login.css">
+export const loginSection = `
 <section class="login-form">
   <h2>Login</h2>
   <form action="">
