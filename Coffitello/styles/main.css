@@ -34,7 +34,7 @@
   
   .fa-star {
     color: white;
-    text-shadow: 0 0 3px #000;
+    text-shadow: 0 0 1px #000;
   }
 
   .bars-icon {
@@ -42,7 +42,7 @@
   }
   
   .checked {
-    color: #FFFF00;
+    color: #9b8967;
   }
   
   .hidden {
@@ -144,10 +144,6 @@
 
   .main-menu .menu-list {
     display: flex;
-  }
-  
-  #logout-link, #bar-link{
-    display: none;
   }
   
   footer {

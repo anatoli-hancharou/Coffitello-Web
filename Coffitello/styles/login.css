@@ -13,10 +13,6 @@ form {
   height: 100%;
 }
 
-input {
-  box-shadow: none;
-}
-
 input:focus{
   outline: none;
 }
@@ -55,6 +51,7 @@ input:focus{
   border-radius: var(--input-border-radius);
   border: 0;
   border-bottom: 1px solid #747474;
+  box-shadow: none;
   text-align: left;
   padding: 10px 1px;
   width: 100%;
@@ -104,7 +101,6 @@ input:focus{
 @media only screen and (max-device-width : 550px) {
   :root {
     --main-border-radius: 30px;
-    --input-border-radius: 5px;
     --primary-font-size: 3em;
     --primary-font-size-sm: 2.3em;
   }
