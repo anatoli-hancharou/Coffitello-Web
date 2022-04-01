@@ -11,7 +11,7 @@ export const createSection = `
       </div>
       <div class="form-gorup">
         <label for="drink-value" class="input-label">Value:</label>
-        <input type="text" name="drink-value" id="drink-value" placeholder="ml" required>
+        <input type="number" name="drink-value" id="drink-value" placeholder="ml" required>
       </div>
       <div class="form-gorup">
         <label for="drink-description-textarea" class="input-label">Description:</label>
@@ -33,6 +33,6 @@ export const createSection = `
       </ul>
     </div>
   </div>
-  <button type="button" id="create-drink-btn">CREATE</button>
+  <button type="submit" id="create-drink-btn">CREATE</button>
 </form>
 `

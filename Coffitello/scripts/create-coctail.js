@@ -1,4 +1,7 @@
 import { ingredients } from "../constants/ingredients.js";
+import { Ingredient } from "../models/ingredient.js";
+import { Coctail } from "../models/coctail.js";
+import { authService } from "../services/auth.js";
 
 const currentValues = [];
 
@@ -49,8 +52,9 @@ function addIngredientValue(ingredient) {
   input.setAttribute("type", "number");
   input.setAttribute("name", "ingredient-value");
   input.setAttribute("placeholder", "%");
-  input.setAttribute("min", "0");
+  input.setAttribute("min", "1");
   input.setAttribute("max", "100");
+  input.value = "";
   input.required = true;
   li.appendChild(input);
   ingredientsValuesList.appendChild(li);
@@ -84,9 +88,64 @@ function addIngredients(category) {
   }
 }
 
+function submitCreateCoctailForm(event) {
+  let form = document.querySelector("form");
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+  else {
+    event.preventDefault();
+  }
+  let name = document.getElementById('drink-name').value;
+  let description = document.getElementById('drink-description-textarea').value;
+  let value = document.getElementById('drink-value').valueAsNumber;
+  let addedBy = authService.user.email;
+  if (currentValues.length == 0) {
+    alert("Please, select at least one ingredient for your coctail.");
+    return;
+  }
+
+  let ingredientsNames = document.querySelectorAll(".value-list-item");
+  let ingredientsValues = document.getElementsByClassName("ingredient-value");
+  let ingredientsSum = Array.from(ingredientsValues).reduce((prev, b) => prev + b.valueAsNumber | 0, 0);
+
+  if (!isInputValid(name, description, value, ingredientsSum)) {
+    return false;
+  }
+
+  let ingredients = Array.from(ingredientsNames).map((n, i) =>
+    new Ingredient(n.innerText, ingredientsValues[i].valueAsNumber));
+
+  let coctail = new Coctail(name, addedBy, value, description, ingredients);
+  console.log(coctail);
+}
+
+function isInputValid(name, description, value, ingredientsSum) {
+  if (name.length < 2) {
+    alert("Name should not be shorten than 2 symbols.");
+    return false;
+  }
+  if (description.length < 5) {
+    alert("Description should not be shorten than 5 symbols.");
+    return false;
+  }
+  if (value < 50 || value > 2000) {
+    alert("Value of your coctail should be between 50 and 2000 ml.");
+    return false;
+  }
+  if (ingredientsSum != 100) {
+    alert(`Sum of the values of each ingredient should be equal to 100%\nCurrent sum is ${ingredientsSum}%`);
+    return false;
+  }
+
+  return true;
+}
+
 function setListeners() {
   addCategories();
   setCategoryOnClickEvent();
+  document.getElementById('create-drink-btn').addEventListener('click', submitCreateCoctailForm);
 }
 
 document.addEventListener('contentChanged', setListeners);

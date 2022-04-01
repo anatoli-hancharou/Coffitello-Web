@@ -3,6 +3,10 @@ import { onNavigate } from "./router.js";
 import { auth } from "../scripts/firebaseInit.js";
 
 class AuthService {
+  constructor() {
+    this.user = null;
+  }
+
   async isAuthorized() {
     return await initializeAuth.then(result => result != null);
   }
@@ -54,6 +58,7 @@ class AuthService {
 
 const initializeAuth = new Promise(resolve => {
   onAuthStateChanged(auth, (user) => {
+    authService.user = user;
     if (user) {
       showMenuForUnauthorizedUser();
     } else {
