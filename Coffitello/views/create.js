@@ -21,30 +21,15 @@ export const createSection = `
   </div>
   <div class="choose-ingredients-block">
     <div class="choose-block choose-category-block">
-      <ul class="choose-category-list">
-        <li class="list-item choose-category-list-item"><span>Wines & Champagnes</span></li>
-        <li class="list-item choose-category-list-item"><span>Juices</span></li>
-        <li class="list-item choose-category-list-item"><span>Sodas</span></li>
-        <li class="list-item choose-category-list-item"><span>Liqueurs</span></li>
+      <ul id="choose-category-list">
       </ul>
     </div>
     <div class="choose-block choose-ingredient-block">
-      <ul class="choose-ingredient-list">
-        <li class="list-item choose-ingredient-list-item"><span>Red wine</span></li>
-        <li class="list-item choose-ingredient-list-item"><span>White wine</span></li>
-        <li class="list-item choose-ingredient-list-item"><span>Rose wine</span></li>
-        <li class="list-item choose-ingredient-list-item"><span>Champagne</span></li>
-        <li class="list-item choose-ingredient-list-item"><span>Rose Champagne</span></li>
+      <ul id="choose-ingredient-list">
       </ul>
     </div>
     <div class="choose-block ingredients-values-block">
-      <ul class="ingredients-values-list">
-        <li class="list-item value-list-item">Red wine
-            <input type="number" name="ingredient-value" class="ingredient-value" placeholder="%" min="0" max="100">
-        </li>
-        <li class="list-item value-list-item">Champagne
-          <input type="number" name="ingredient-value" class="ingredient-value" placeholder="%" min="0" max="100">
-      </li>
+      <ul id="ingredients-values-list">
       </ul>
     </div>
   </div>

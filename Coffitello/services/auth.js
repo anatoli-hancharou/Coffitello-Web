@@ -66,14 +66,14 @@ const initializeAuth = new Promise(resolve => {
 function showMenuForAuthorizedUser() {
   document.getElementById('signup-link').classList.remove("hidden");
   document.getElementById('login-link').classList.remove("hidden");
-  document.getElementById('logout-link').setAttribute("class", "hidden");
-  document.getElementById('bar-link').setAttribute("class", "hidden");
-  document.getElementById('create-link').setAttribute("class", "hidden");
+  document.getElementById('logout-link').classList.add("hidden");
+  document.getElementById('bar-link').classList.add("hidden");
+  document.getElementById('create-link').classList.add("hidden");
 }
 
 function showMenuForUnauthorizedUser() {
-  document.getElementById('signup-link').setAttribute("class", "hidden");
-  document.getElementById('login-link').setAttribute("class", "hidden");
+  document.getElementById('signup-link').classList.add("hidden");
+  document.getElementById('login-link').classList.add("hidden");
   document.getElementById('bar-link').classList.remove("hidden");
   document.getElementById('logout-link').classList.remove("hidden");
   document.getElementById('create-link').classList.remove("hidden");

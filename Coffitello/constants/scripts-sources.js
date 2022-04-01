@@ -1,4 +1,5 @@
 export const scripts = {
-  '/login' : "scripts/auth.js",
-  '/register' : "scripts/auth.js"
+  "/create" : "scripts/create-coctail.js",
+  "/login" : "scripts/auth.js",
+  "/register" : "scripts/auth.js"
 }

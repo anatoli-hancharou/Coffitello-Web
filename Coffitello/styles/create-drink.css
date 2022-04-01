@@ -53,6 +53,11 @@
 }
 
 .choose-category-list-item:hover, .choose-ingredient-list-item:hover {
+  background: #86785f;
+  color: var(--primary-background-color);
+}
+
+.selected {
   background: var(--primary-text-color);
   color: var(--primary-background-color);
 }
