@@ -1,0 +1,106 @@
+:root {
+  --favorite-block-font-size: 32px;
+}
+
+a {
+  display: block;
+}
+
+#favorites-section {
+  margin: 0 auto;
+  min-height: 300px;
+  max-width: 750px;
+}
+
+.favorites-list-item {
+  margin: 20px 0;
+  border-radius: var(--main-border-radius);
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.3);
+  transition: all 400ms ease;
+}
+
+.favorites-list-item:hover {
+  transform: scale(1.05);
+}
+
+.favorite-wrapper {
+  display: flex;
+  position: relative;
+  padding: 20px;
+}
+
+.coctail-image-block {
+  width: auto;
+}
+
+.favorite-coctail-name {
+  font-family: var(--primary-text-font);
+  font-size: var(--favorite-block-font-size);
+  max-width: 80%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.favorite-coctail-desc {
+  font-family: var(--italic-font);
+  font-size: var(--favorite-block-font-size);
+  text-align: center;
+  height: 80px;
+  overflow: hidden;
+}
+
+.favorite-info-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 80%;
+}
+
+.mark-favourite-btn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-size: 40px 40px;
+  background-color: var(--primary-background-color);
+  right: 15px;
+  background-image: url( '../icons/heart.png' );
+}
+
+@media only screen and (max-device-width : 550px) {
+  :root {
+    --favorite-block-font-size: 56px;
+  }
+  
+  #favorites-section {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .favorite-wrapper {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  .coctail-image-block {
+    height: 250px;
+  }
+
+  .coctail-image-block img {
+    height: 100%;
+  }
+
+  .favorite-coctail-desc {
+    height: 150px;
+  }
+
+  .mark-favourite-btn {
+    width: 90px;
+    height: 90px;
+    background-size: 90px 90px;
+    right: 15px;
+  }
+}

@@ -1,0 +1,211 @@
+:root {
+  --desc-block-font-size: 20px;
+  --desc-block-font-size-sm: 18px;
+}
+
+#coctail-info-block, #comment-section {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--primary-text-font);
+  margin: 0 auto;
+  width: 50%;
+  padding: 20px;
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.3);
+  border-radius: var(--main-border-radius);
+}
+
+#comment-section {
+  margin: 20px auto;
+}
+
+#coctail-info-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 350px;
+  width: 15%;
+  position: fixed;
+  z-index: -1;
+  top: 150px;
+  left: 15px;
+  background-color: var(--primary-background-color);
+  overflow-x: hidden;
+  padding: 15px;
+  font-size: var(--desc-block-font-size-sm);
+  text-align: center;
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.4);
+  border-radius: var(--main-border-radius);
+}
+
+#coctail-name {
+  font-size: 1.8em;
+  font-family: var(--italic-font);
+}
+
+#coctail-description {
+  font-size: 1.8em;
+  font-family: var(--italic-font);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#mark-favourite-btn, #coctail-info-btn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-size: 50px 50px;
+  background-color: var(--primary-background-color);
+}
+
+#coctail-info-btn {
+  border-radius: 50%;
+  display: none;
+  left: 15px;
+  background-image: url( '../icons/information.png' );
+}
+
+#mark-favourite-btn {
+  right: 15px;
+  background-image: url( '../icons/empty-heart.png' );
+}
+
+.grid-item-rating {
+  border-radius: 15px;
+  padding: 7px;
+  margin: 0 auto 5px;
+  width: auto;
+  text-align: center;
+}
+
+#comment-form {
+  width: 70%;
+}
+
+#comment-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  background-color: var(--primary-background-color);
+  font-size: 1.3em;
+  border-radius: 20px;
+  display: block;
+  resize: none;
+}
+
+#add-comment-btn {
+  float: right;
+  border: none;
+  margin: 15px auto;
+  padding: 3px 15px;
+  font-size: var(--desc-block-font-size);
+  transition: transform 150ms ease;
+  background: var(--primary-text-color);
+  color: var(--primary-background-color);
+}
+
+#comments-list {
+  width: 70%;
+}
+
+.comments-list-item {
+  padding: 10px 15px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+  border-radius: var(--main-border-radius);
+}
+
+.comment-wrapper {
+  display: flex;
+  height: auto;
+  overflow: hidden;
+  font-size: var(--desc-block-font-size-sm);
+}
+
+.comment-info {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+#ingredients-list, #down-info {
+  margin-top: 20px;
+}
+
+.ingredients-list-item {
+  margin: 5px auto;
+}
+
+#down-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (max-device-width : 550px) {
+  :root {
+    --desc-block-font-size: 40px;
+    --desc-block-font-size-sm: 36px;
+  }
+
+  #coctail-info-block {
+    border: none;
+    box-shadow: none;
+  }
+
+  #coctail-info-block, #comment-section {
+    width: 85%;
+  }
+
+  #coctail-description {
+    font-size: 3.5em;
+  }
+
+  #coctail-name {
+    font-size: 4em;
+  }
+
+  #coctail-info-sidebar {
+    display: none;
+    z-index: 10;
+    top: 285px;
+    width: 80%;
+  }
+
+  .coctail-image-block {
+    height: 250px;
+    width: auto;
+  }
+
+  .coctail-image-block img {
+    height: 100%;
+  }
+
+  #comments-list, #comment-form {
+    width: 95%;
+  }
+
+  #comment-textarea {
+    font-size: 3em;
+  }
+
+  #mark-favourite-btn, #coctail-info-btn {
+    width: 90px;
+    height: 90px;
+    background-size: 90px 90px;
+  }
+
+  #coctail-info-btn {
+    position: fixed;
+    display: block;
+    top: 195px;
+    left: 60px;
+    z-index: 10;
+  }
+
+  #add-comment-btn {
+    padding: 15px 45px;
+  }
+}

@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gelasio&display=swap');
+
+:root {
+    --primary-background-color: #F9F4EF;
+    --primary-text-color: #716040;
+    --light-grey-color: #CCC;
+    --main-border-radius: 30px;
+    --input-border-radius: 5px;
+    --primary-text-font: 'Gelasio', serif;
+    --italic-font: 'Dancing Script', cursive;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    font-weight: lighter;
+    box-sizing: border-box;
+  }
+  
+  main {
+    min-height: calc(100vh - 60px);
+    padding: 150px 0 50px;
+  }
+  
+  body {
+    font-family: Helvetica Neue Light, Helvetica, Arial, sans-serif;
+    color: var(--primary-text-color);
+    background-color: var(--primary-background-color);
+  }
+  
+  h1 i {
+    font-size: 0.96em;
+  }
+  
+  .fa-star {
+    color: white;
+    text-shadow: 0 0 1px #000;
+  }
+
+  .bars-icon {
+    display: none;
+  }
+  
+  .checked {
+    color: #9b8967;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+  }
+
+  p {
+    font-family: var(--primary-text-font);
+  }
+
+  .header-left-title a {
+    color: var(--primary-text-color);
+  }
+  
+  ul {
+    list-style: none;
+  }
+
+  button:active {
+    transform: scale(0.98);
+  }
+
+  input, button {
+    text-align: center;
+    font-family: var(--primary-text-font);
+    background-color: var(--primary-background-color);
+    border-radius: var(--input-border-radius);
+  }
+
+  input, textarea {
+    border: 0;
+    -webkit-appearance: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+    transition: all 300ms ease;
+  }
+
+  input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7)
+  }
+
+  .italic-font {
+    font-family: var(--italic-font);
+  }
+
+  /* HEADER */
+  header {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    background-color: var(--primary-background-color);
+    border-bottom: 4px solid rgba(140, 120, 81, 0.7);
+    padding: 15px 50px;
+    min-width: 650px;
+    display: flex;
+  }
+  
+  header .header-left-title {
+    font-size: 28px;
+    display: block;
+    margin: 0 auto 0 0;
+  }
+  
+  .menu-list {
+    position: absolute;
+    top: 25px;
+    right: 10px;
+    width: 650px;
+    font-family: var(--primary-text-font);
+    justify-content: space-evenly;
+  }
+  
+  .menu-list li {
+    line-height: 60px;
+    padding-right: 13px;
+    background-color: var(--primary-background-color);
+    font-size: 2em;
+    transition: all 300ms ease;
+  }
+  
+  .menu-list li a {
+    display: block;
+    margin-left: 10px;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .menu-list li:hover {
+    margin-left: 15px;
+    color: var(--primary-background-color);
+    background-color: var(--primary-text-color);
+  }
+
+  .main-menu .menu-list {
+    display: flex;
+  }
+  
+  footer {
+    width: 100%;
+    height: 60px;
+    z-index: 2;
+    background-color: var(--primary-text-color);
+    min-width: 650px;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .copyright {
+    color: var(--primary-background-color);
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  @media only screen and (max-device-width : 550px) {
+    main {
+      padding: 180px 0 100px;
+    }
+
+    h1 {
+      font-size: 3.7em;
+    }
+
+    header {
+      padding: 20px 50px;
+    }
+
+    header .header-left-title {
+      font-size: 24px;
+    }
+
+    footer {
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      bottom: 0;
+      height: 80px;
+      font-size: 1.5em;
+    }
+
+    .bars-icon {
+      display: inline;
+    }
+
+    .menu-list {
+      top: 89px;
+      padding-top: 48px;
+      left: 50px;
+    }
+
+    .main-menu .menu-list {
+      display: none;
+    }
+    
+    .main-menu:hover .menu-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-list li {
+      padding: 20px;
+      background-color: var(--primary-background-color);
+      font-size: 3em;
+      width: 430px;
+    }
+
+    .grid-item-rating {
+      font-size: 2.5em;
+      padding: 20px;
+    }
+  }
+  
