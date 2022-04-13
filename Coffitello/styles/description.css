@@ -1,13 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
-
 :root {
-  --primary-background-color: #F9F4EF;
-  --primary-text-color: #716040;
-  --border-color: #020826;
-  --main-border-radius: 30px;
-  --input-border-radius: 5px;
-  --primary-font-size: 1.2em;
-  --primary-font-size-sm: 1.1em;
+  --desc-block-font-size: 20px;
+  --desc-block-font-size-sm: 18px;
 }
 
 #coctail-info-block, #comment-section {
@@ -15,7 +8,7 @@
   position: relative;
   flex-direction: column;
   align-items: center;
-  font-family: 'Gelasio', serif;
+  font-family: var(--primary-text-font);
   margin: 0 auto;
   width: 50%;
   padding: 20px;
@@ -41,7 +34,7 @@
   background-color: var(--primary-background-color);
   overflow-x: hidden;
   padding: 15px;
-  font-size: var(--primary-font-size-sm);
+  font-size: var(--desc-block-font-size-sm);
   text-align: center;
   box-shadow: 0 2px 25px rgba(0, 0, 0, 0.4);
   border-radius: var(--main-border-radius);
@@ -49,12 +42,12 @@
 
 #coctail-name {
   font-size: 1.8em;
-  font-family: 'Dancing Script', cursive;
+  font-family: var(--italic-font);
 }
 
 #coctail-description {
   font-size: 1.8em;
-  font-family: 'Dancing Script', cursive;
+  font-family: var(--italic-font);
   text-align: center;
   margin-bottom: 20px;
 }
@@ -99,7 +92,6 @@
   background-color: var(--primary-background-color);
   font-size: 1.3em;
   border-radius: 20px;
-  box-sizing: border-box;
   display: block;
   resize: none;
 }
@@ -109,7 +101,7 @@
   border: none;
   margin: 15px auto;
   padding: 3px 15px;
-  font-size: var(--primary-font-size);
+  font-size: var(--desc-block-font-size);
   transition: transform 150ms ease;
   background: var(--primary-text-color);
   color: var(--primary-background-color);
@@ -129,7 +121,7 @@
   display: flex;
   height: auto;
   overflow: hidden;
-  font-size: var(--primary-font-size-sm);
+  font-size: var(--desc-block-font-size-sm);
 }
 
 .comment-info {
@@ -154,9 +146,8 @@
 
 @media only screen and (max-device-width : 550px) {
   :root {
-    --input-border-radius: 15px;
-    --primary-font-size: 2.7em;
-    --primary-font-size-sm: 2.3em;
+    --desc-block-font-size: 40px;
+    --desc-block-font-size-sm: 36px;
   }
 
   #coctail-info-block {

@@ -1,17 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Gelasio&display=swap');
-
 :root {
-  --primary-background-color: #F9F4EF;
-  --primary-text-color: #716040;
-  --border-color: #020826;
-  --main-border-radius: 30px;
-  --input-border-radius: 5px;
-  --primary-font-size: 1.2em;
-  --primary-font-size-sm: 1.1em;
+  --create-block-font-size: 20px;
+  --create-block-font-size-sm: 18px;
+  --create-block-border-radius: 5px;
 }
 
 .create-drink-form {
-  font-family: 'Gelasio', serif;
+  font-family: var(--primary-text-font);
   margin: 0 auto;
   width: 60%;
 }
@@ -30,36 +24,37 @@
 .choose-block {
   flex: 1 1 0px;
   padding: 15px;
-  box-sizing: border-box;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
   border-radius: var(--main-border-radius);
 }
 
-#choose-category-block {
+.choose-category-block {
   margin: 10px 10px 0 0;
 }
 
-#choose-ingredient-block {
+.choose-ingredient-block {
   margin-top: 10px;
 }
 
-#ingredients-values-block {
+.ingredients-values-block {
   margin: 10px 0 0 10px;
 }
 
 .list-item {
+  display: flex;
+  justify-content: space-between;
   padding: 4px;
-  border-radius: var(--input-border-radius);
-  font-size: var(--primary-font-size-sm);
+  border-radius: var(--create-block-border-radius);
+  font-size: var(--create-block-font-size-sm);
+}
+
+.list-item:hover {
+  cursor: pointer;
 }
 
 .choose-category-list-item:hover, .choose-ingredient-list-item:hover {
   background: var(--primary-text-color);
   color: var(--primary-background-color);
-}
-
-.ingredient-value {
-  float: right;
 }
 
 .drink-description-block {
@@ -78,7 +73,6 @@
 .description-block {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
   padding: 10px;
   width: 80%;
 }
@@ -98,17 +92,15 @@ input {
 }
 
 textarea {
-  font-family: 'Gelasio', serif;
-  box-sizing: border-box;
+  font-family: var(--primary-text-font);
   background-color: var(--primary-background-color);
-  border-radius: var(--input-border-radius);
+  border-radius: var(--create-block-border-radius);
 }
 
 .input-label {
   width: 110px;
   margin-right: 50px;
-  font-size: var(--primary-font-size);
-  color: var(--border-color);
+  font-size: var(--create-block-font-size);
 }
 
 input[type='number']::-webkit-inner-spin-button, 
@@ -121,13 +113,12 @@ input[type='number']::-webkit-outer-spin-button {
   width: 60%;
   min-height: 80px;
   padding: 5px;
-  font-size: var(--primary-font-size-sm);
-  box-sizing: border-box;
+  font-size: var(--create-block-font-size-sm);
   resize: none;
 }
 
 #drink-value, #drink-name {
-  font-size: var(--primary-font-size-sm);
+  font-size: var(--create-block-font-size-sm);
 }
 
 #create-drink-btn {
@@ -135,7 +126,7 @@ input[type='number']::-webkit-outer-spin-button {
   display: block;
   margin: 15px auto;
   padding: 10px 30px;
-  font-size: var(--primary-font-size);
+  font-size: var(--create-block-font-size);
   transition: transform 150ms ease;
   background: var(--primary-text-color);
   color: var(--primary-background-color);
@@ -155,10 +146,11 @@ input[type='number']::-webkit-outer-spin-button {
 
 @media only screen and (max-device-width : 550px) {
   :root {
-    --input-border-radius: 15px;
-    --primary-font-size: 2.7em;
-    --primary-font-size-sm: 2.5em;
+    --create-block-border-radius: 15px;
+    --create-block-font-size: 40px;
+    --create-block-font-size-sm: 36px;
   }
+
   .create-drink-form {
     width: 80%;
     border: none;
@@ -190,13 +182,9 @@ input[type='number']::-webkit-outer-spin-button {
     flex-direction: column;
   }
 
-  #choose-category-block, #choose-ingredient-block, #ingredients-values-block {
-    margin: 0 0 30px 0;
-  }
-
   .choose-block {
     width: 100%;
-    margin: 0 0 20px 0;
+    margin: 0 0 30px 0;
   }
 
   .form-gorup {

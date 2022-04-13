@@ -1,11 +1,5 @@
 :root {
-  --primary-background-color: #F9F4EF;
-  --primary-text-color: #716040;
-  --border-color: #020826;
-  --main-border-radius: 30px;
-  --input-border-radius: 5px;
-  --primary-font-size: 2em;
-  --primary-font-size-sm: 1.1em;
+  --favorite-block-font-size: 32px;
 }
 
 a {
@@ -13,9 +7,9 @@ a {
 }
 
 #favorites-section {
-  width: 50%;
   margin: 0 auto;
   min-height: 300px;
+  max-width: 750px;
 }
 
 .favorites-list-item {
@@ -40,8 +34,8 @@ a {
 }
 
 .favorite-coctail-name {
-  font-family: 'Gelasio', serif;
-  font-size: var(--primary-font-size);
+  font-family: var(--primary-text-font);
+  font-size: var(--favorite-block-font-size);
   max-width: 80%;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -49,8 +43,8 @@ a {
 }
 
 .favorite-coctail-desc {
-  font-family: 'Dancing Script', cursive;
-  font-size: var(--primary-font-size);
+  font-family: var(--italic-font);
+  font-size: var(--favorite-block-font-size);
   text-align: center;
   height: 80px;
   overflow: hidden;
@@ -64,7 +58,7 @@ a {
   width: 80%;
 }
 
-#mark-favourite-btn {
+.mark-favourite-btn {
   position: absolute;
   width: 40px;
   height: 40px;
@@ -75,30 +69,14 @@ a {
   background-image: url( '../icons/heart.png' );
 }
 
-@media only screen and (max-device-width : 1200px) {
-  #favorites-section {
-    width: 70%;
-  }
-}
-
-@media only screen and (max-device-width : 1000px) {
-  #favorites-section {
-    width: 80%;
-  }
-}
-
 @media only screen and (max-device-width : 550px) {
   :root {
-    --main-border-radius: 30px;
-    --input-border-radius: 5px;
-    --primary-font-size: 3.5em;
-    --primary-font-size-sm: 1.1em;
+    --favorite-block-font-size: 56px;
   }
   
   #favorites-section {
     width: 80%;
     margin: 0 auto;
-    min-height: 300px;
   }
 
   .favorite-wrapper {
@@ -119,7 +97,7 @@ a {
     height: 150px;
   }
 
-  #mark-favourite-btn {
+  .mark-favourite-btn {
     width: 90px;
     height: 90px;
     background-size: 90px 90px;
