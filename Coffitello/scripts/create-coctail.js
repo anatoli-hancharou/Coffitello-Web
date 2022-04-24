@@ -2,6 +2,7 @@ import { ingredients } from "../constants/ingredients.js";
 import { Ingredient } from "../models/ingredient.js";
 import { Coctail } from "../models/coctail.js";
 import { authService } from "../services/auth.js";
+import { coctailDb } from "../services/database.js";
 
 const currentValues = [];
 
@@ -119,6 +120,9 @@ function submitCreateCoctailForm(event) {
 
   let coctail = new Coctail(name, addedBy, value, description, ingredients);
   console.log(coctail);
+
+  coctailDb.addCoctail(coctail);
+  
 }
 
 function isInputValid(name, description, value, ingredientsSum) {
