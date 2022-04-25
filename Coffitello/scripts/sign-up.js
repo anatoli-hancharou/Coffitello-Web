@@ -10,9 +10,6 @@ function submitSignUpForm(event) {
   }
 }
 
-function setListeners() {
+export function setSignUpListeners() {
   document.getElementById('register-btn').addEventListener('click', submitSignUpForm);
 }
-
-document.addEventListener('contentChanged', setListeners);
-setListeners();

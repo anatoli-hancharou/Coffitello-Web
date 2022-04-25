@@ -1,5 +1,6 @@
 export const createSection = `
-<form class="create-drink-form" action="">
+<link rel="stylesheet" href="styles/ingredients.css">
+<form class="create-drink-form" onclick="void(0);">
   <div class="drink-description-block">
     <div class="coctail-image-block">
         <img src="icons/drink.png" alt="coctail-cup">

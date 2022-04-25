@@ -10,9 +10,6 @@ function submitSignInForm(event) {
   }
 }
 
-function setListeners() {
+export function setSignInListeners() {
   document.getElementById('login-btn').addEventListener('click', submitSignInForm);
 }
-
-document.addEventListener('contentChanged', setListeners);
-setListeners();

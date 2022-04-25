@@ -3,6 +3,8 @@ import { Ingredient } from "../models/ingredient.js";
 import { Coctail } from "../models/coctail.js";
 import { authService } from "../services/auth.js";
 import { coctailDb } from "../services/database.js";
+import { onNavigate } from "../services/router.js";
+import { createIngredinets } from "../services/image-creator.js";
 
 const currentValues = [];
 
@@ -57,6 +59,7 @@ function addIngredientValue(ingredient) {
   input.setAttribute("max", "100");
   input.value = "";
   input.required = true;
+  input.addEventListener("input", refreshImage);
   li.appendChild(input);
   ingredientsValuesList.appendChild(li);
 }
@@ -122,7 +125,7 @@ function submitCreateCoctailForm(event) {
   console.log(coctail);
 
   coctailDb.addCoctail(coctail);
-  
+  onNavigate("/");
 }
 
 function isInputValid(name, description, value, ingredientsSum) {
@@ -146,11 +149,27 @@ function isInputValid(name, description, value, ingredientsSum) {
   return true;
 }
 
-function setListeners() {
-  addCategories();
-  setCategoryOnClickEvent();
-  document.getElementById('create-drink-btn').addEventListener('click', submitCreateCoctailForm);
+function refreshImage(event) {
+  let ingredientsNames = document.querySelectorAll(".value-list-item");
+  let ingredientsValues = document.getElementsByClassName("ingredient-value");
+  
+  let ingredients = Array.from(ingredientsNames).map((n, i) =>
+    new Ingredient(n.innerText, ingredientsValues[i].valueAsNumber | 0));
+
+  const ingredientsDivs = createIngredinets(ingredients);
+  const imageBlock = document.querySelector(".coctail-image-block");
+  let prevIngredients = imageBlock.querySelectorAll(".coctail-ingredient");
+  for (let prevIngredient of prevIngredients) {
+    prevIngredient.remove();
+  }
+
+  for (const ingredientDiv of ingredientsDivs) {
+    imageBlock.appendChild(ingredientDiv);
+  }
 }
 
-document.addEventListener('contentChanged', setListeners);
-setListeners();
+export function setCreateCoctailListeners() {
+  addCategories();
+  setCategoryOnClickEvent();
+  document.getElementById("create-drink-btn").addEventListener("click", submitCreateCoctailForm);
+}

@@ -70,9 +70,23 @@
 }
 
 .coctail-image-block {
+  position: relative;
   margin: 0 auto;
   padding: 20px;
   width: auto;
+}
+
+.coctail-image-block img {
+  position: relative;
+  z-index: 10;
+}
+
+.coctail-ingredient {
+  position: absolute;
+  left: 50px;
+  top: 58px;
+  height: 88px;
+  width: 70px;
 }
 
 .description-block {
@@ -219,6 +233,7 @@ input[type='number']::-webkit-outer-spin-button {
   }
 
   .ingredient-value {
+    width: 150px;
     font-size: inherit;
   }
 
@@ -226,4 +241,10 @@ input[type='number']::-webkit-outer-spin-button {
     flex-direction: column;
   }
 
+  .coctail-ingredient {
+    left: 70px;
+    top: 77px;
+    height: 148px;
+    width: 116px;
+  }
 }

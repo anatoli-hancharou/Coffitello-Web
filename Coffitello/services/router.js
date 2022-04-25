@@ -15,9 +15,11 @@ export async function changeContent(pathname) {
     }
   }
   if (pathname in routes) {
+    removeEventListeners();
     rootDiv.innerHTML = routes[pathname];
     if (pathname in scripts) {
       addScript(pathname);
+      setEventListeners(pathname);
     }
     if (pathname in styles) {
       addStyle(pathname);
@@ -46,7 +48,7 @@ function getPathWithoutParams(path) {
 }
 
 async function addScript(pathname) {
-  var scriptSrc = scripts[pathname];    
+  var scriptSrc = scripts[pathname].script;    
   await loadScript(scriptSrc)
     .catch(error => console.log(`Error: ${error.message}`));
   rootDiv.dispatchEvent(new Event("contentChanged", {bubbles: true}));
@@ -71,6 +73,16 @@ function addStyle(pathname) {
   style.setAttribute("rel", "stylesheet");
   style.setAttribute("href", styleSrc);
   rootDiv.prepend(style);
+}
+
+function setEventListeners(pathname) {
+  rootDiv.addEventListener("contentChanged", scripts[pathname].eventListener);
+}
+
+function removeEventListeners() {
+  for (var script in scripts){
+    rootDiv.removeEventListener("contentChanged", scripts[script].eventListener);
+  }
 }
 
 window.onpopstate = () => changeContent(window.location.pathname);
