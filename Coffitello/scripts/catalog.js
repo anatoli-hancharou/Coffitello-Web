@@ -1,9 +1,25 @@
 import { coctailDb } from "../services/database.js";
 import { createCoctailImageDiv } from "../services/image-creator.js";
+import { onNavigate } from "../services/router.js";
+/* <a href="#">
+    <div class="catalog-item">
+      <p class="italic-font coctail-title">Coctail</p>
+      <div class="coctail-image">
+        <img src="icons/drink.png" alt="empty-cup">
+      </div>
+      <div class="grid-item-rating">
+        <span class="fa fa-star checked" aria-hidden="true"></span>
+        <span class="fa fa-star" aria-hidden="true"></span>
+        <span class="fa fa-star" aria-hidden="true"></span>
+        <span class="fa fa-star" aria-hidden="true"></span>
+        <span class="fa fa-star" aria-hidden="true"></span>
+      </div>
+    </div>
+  </a> */
+
 
 async function populateCatalog() {
   let coctails = await coctailDb.getCoctails();
-  console.log(coctails);
   let catalogDiv = document.getElementById("catalog-grid");
   for (let coctail of coctails) {
     let coctailNode = document.createElement("a");
@@ -17,12 +33,18 @@ async function populateCatalog() {
     coctailName.textContent = coctail.name;
     coctailItemDiv.appendChild(coctailName);
 
-    let coctailImageDiv = createCoctailImageDiv(coctail);
+    let coctailImageDiv = createCoctailImageDiv(coctail.ingredients);
     coctailItemDiv.appendChild(coctailImageDiv); 
 
     let ratingDiv = createRatingDiv(coctail);
     coctailItemDiv.appendChild(ratingDiv);
     coctailNode.appendChild(coctailItemDiv);
+
+    coctailNode.addEventListener("click", event => {
+      event.preventDefault();
+      onNavigate(`/description?id=${coctail.id}`);
+    });
+
     catalogDiv.append(coctailNode);
   }
 }

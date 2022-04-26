@@ -80,7 +80,7 @@ function setEventListeners(pathname) {
 }
 
 function removeEventListeners() {
-  for (var script in scripts){
+  for (var script in scripts) {
     rootDiv.removeEventListener("contentChanged", scripts[script].eventListener);
   }
 }

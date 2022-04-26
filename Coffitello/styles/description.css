@@ -21,7 +21,6 @@
 }
 
 #coctail-info-sidebar {
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
@@ -40,6 +39,10 @@
   border-radius: var(--main-border-radius);
 }
 
+.coctail-info-sidebar {
+  display: flex;
+}
+
 #coctail-name {
   font-size: 1.8em;
   font-family: var(--italic-font);
@@ -50,6 +53,23 @@
   font-family: var(--italic-font);
   text-align: center;
   margin-bottom: 20px;
+}
+
+.coctail-image-block {
+  position: relative;
+}
+
+.coctail-image-block img {
+  position: inherit;
+  z-index: 5;
+}
+
+.coctail-ingredient {
+  position: absolute;
+  left: 32px;
+  top: 39px;
+  height: 65%;
+  width: 53%;
 }
 
 #mark-favourite-btn, #coctail-info-btn {
@@ -112,6 +132,7 @@
 }
 
 .comments-list-item {
+  margin-bottom: 10px;
   padding: 10px 15px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
   border-radius: var(--main-border-radius);
@@ -126,6 +147,7 @@
 
 .comment-info {
   display: flex;
+  width: 30%;
   flex-direction: column;
   margin-right: 20px;
 }
@@ -168,11 +190,21 @@
   }
 
   #coctail-info-sidebar {
-    display: none;
     z-index: 10;
     top: 285px;
     width: 80%;
   }
+
+  .coctail-info-sidebar {
+    display: none;
+  }
+
+  .coctail-ingredient {
+    left: 58px;
+    top: 75px;
+    height: 67%;
+    width: 55%;
+  }  
 
   .coctail-image-block {
     height: 250px;
@@ -181,6 +213,15 @@
 
   .coctail-image-block img {
     height: 100%;
+  }
+
+  .comment-info {
+    width: 35%;
+  }
+
+  .comment-info > p {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   #comments-list, #comment-form {
@@ -202,7 +243,7 @@
     display: block;
     top: 195px;
     left: 60px;
-    z-index: 10;
+    z-index: 5;
   }
 
   #add-comment-btn {

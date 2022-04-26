@@ -3,7 +3,7 @@ function getIngredientoPolygon(value) {
   -webkit-clip-path: polygon(${10 * value / 100}% ${value}%, ${100 - (10 * value / 100)}% ${value}%, 85% 100%, 10% 100%);`;
 }
 
-export function createCoctailImageDiv(coctail) {
+export function createCoctailImageDiv(ingredients) {
   let coctailImageDiv = document.createElement("div");
   coctailImageDiv.classList.add("coctail-image");
 
@@ -13,7 +13,7 @@ export function createCoctailImageDiv(coctail) {
 
   coctailImageDiv.appendChild(coctailImg);
 
-  const ingredientsDivs = createIngredinets(coctail.ingredients);
+  const ingredientsDivs = createIngredinets(ingredients);
   for (let ingredientDiv of ingredientsDivs) {
     coctailImageDiv.appendChild(ingredientDiv);
   }
