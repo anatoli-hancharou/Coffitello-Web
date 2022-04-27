@@ -56,7 +56,7 @@
     color: inherit;
   }
 
-  p {
+  p, h2 {
     font-family: var(--primary-text-font);
   }
 

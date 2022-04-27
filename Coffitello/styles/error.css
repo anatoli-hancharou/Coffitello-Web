@@ -1,0 +1,30 @@
+#error-block {
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#error-type {
+  font-size: 2em;
+}
+
+#error-message {
+  text-align: center;
+  font-size: 1.1em;
+}
+
+@media only screen and (max-device-width : 550px) {
+  #error-block {
+    height: 400px;
+  }
+
+  #error-type {
+    font-size: 5em;
+  }
+  
+  #error-message {
+    font-size: 2em;
+  }
+}

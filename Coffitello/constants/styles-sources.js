@@ -4,5 +4,6 @@ export const styles = {
   '/description' : "styles/description.css",
   '/favorite' : "styles/favorite.css",
   '/login' : "styles/login.css",
-  '/register' : "styles/login.css"
+  '/register' : "styles/login.css",
+  '/404' : "styles/error.css"
 }

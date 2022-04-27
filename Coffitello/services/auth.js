@@ -8,10 +8,7 @@ class AuthService {
   }
 
   async isAuthorized() {
-    // return await initializeAuth.then(result => {
-    //   console.log(result);
-    //   return result != null; });
-    return this.user != null;
+    return await checkAuth.then(result => result != null)
   }
  
   signIn(email, password) {
@@ -59,6 +56,7 @@ class AuthService {
   }
 }
 
+const checkAuth = new Promise(resolve => {
   onAuthStateChanged(auth, (user) => {
     authService.user = user;
     if (user) {
@@ -66,7 +64,9 @@ class AuthService {
     } else {
       showMenuForAuthorizedUser();
     }
+    resolve(user)
   });
+})
 
 function showMenuForAuthorizedUser() {
   document.getElementById('signup-link').classList.remove("hidden");

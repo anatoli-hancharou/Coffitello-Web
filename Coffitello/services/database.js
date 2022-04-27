@@ -1,5 +1,5 @@
 import { db } from "../scripts/firebaseInit.js";
-import { ref, set, push, remove, onChildAdded, onChildChanged,onValue } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+import { ref, set, push, remove, onChildAdded, onChildChanged, onValue } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
 import { authService } from "./auth.js";
 
 class CoctailDb {
@@ -60,7 +60,7 @@ class CoctailDb {
   async removeFavorite(coctailId, userId) {
     let favorites = await initializeFavorites(userId).then(result => result);
     let favoriteCoctail = favorites.filter(f => f.coctailId === coctailId)[0];
-    remove(ref(db, 'favorites/' + userId + '/' + favoriteCoctail.id));
+    remove(ref(db, `favorites/${userId}/${favoriteCoctail.id}`));
   }
 }
 
