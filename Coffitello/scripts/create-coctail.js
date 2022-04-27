@@ -122,7 +122,6 @@ function submitCreateCoctailForm(event) {
     new Ingredient(n.innerText, ingredientsValues[i].valueAsNumber));
 
   let coctail = new Coctail(name, addedBy, value, description, ingredients);
-  console.log(coctail);
 
   coctailDb.addCoctail(coctail);
   onNavigate("/");

@@ -1,22 +1,7 @@
 import { coctailDb } from "../services/database.js";
 import { createCoctailImageDiv } from "../services/image-creator.js";
 import { onNavigate } from "../services/router.js";
-/* <a href="#">
-    <div class="catalog-item">
-      <p class="italic-font coctail-title">Coctail</p>
-      <div class="coctail-image">
-        <img src="icons/drink.png" alt="empty-cup">
-      </div>
-      <div class="grid-item-rating">
-        <span class="fa fa-star checked" aria-hidden="true"></span>
-        <span class="fa fa-star" aria-hidden="true"></span>
-        <span class="fa fa-star" aria-hidden="true"></span>
-        <span class="fa fa-star" aria-hidden="true"></span>
-        <span class="fa fa-star" aria-hidden="true"></span>
-      </div>
-    </div>
-  </a> */
-
+import { getCoctailRating } from "./main.js";
 
 async function populateCatalog() {
   let coctails = await coctailDb.getCoctails();
@@ -53,9 +38,10 @@ function createRatingDiv(coctail) {
   let ratingDiv = document.createElement("div");
   ratingDiv.classList.add("grid-item-rating");
 
+  let rating = Math.round(getCoctailRating(coctail));
   for (let i = 0; i < 5; i++) {
     let starSpan = document.createElement("span");
-    starSpan.classList.add("fa", "fa-star");
+    starSpan.classList.add(i < rating ? "fa" : "far", "fa-star");
     starSpan.setAttribute('aria-hidden', "true");
     ratingDiv.appendChild(starSpan);
   }

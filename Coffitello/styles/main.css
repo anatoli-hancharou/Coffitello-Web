@@ -34,7 +34,7 @@
   }
   
   .fa-star {
-    color: white;
+    color: var(--primary-text-color);
     text-shadow: 0 0 1px #000;
   }
 

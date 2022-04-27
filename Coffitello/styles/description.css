@@ -3,6 +3,25 @@
   --desc-block-font-size-sm: 18px;
 }
 
+.fa-star:hover:before,
+.fa-star:hover ~ .fa-star:before,
+.rating-input:checked ~ .fa-star:before {
+  color: var(--primary-text-color);
+}
+
+.star-rating-icon {
+  color: #c0b49d;
+  transition: filter linear .3s;
+}
+
+.star-rating-icon:hover {
+  filter: drop-shadow(1px 1px 5px gold);
+}
+
+.rating-input {
+  display: none;
+}
+
 #coctail-info-block, #comment-section {
   display: flex;
   position: relative;
@@ -94,6 +113,8 @@
 }
 
 .grid-item-rating {
+  display: flex;
+  flex-direction: row-reverse;
   border-radius: 15px;
   padding: 7px;
   margin: 0 auto 5px;

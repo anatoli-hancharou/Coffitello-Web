@@ -1,15 +1,26 @@
-import { getURLParam } from "./main.js";
+import { getURLParam, getCoctailRating } from "./main.js";
 import { coctailDb } from "../services/database.js";
 import { createIngredinets } from "../services/image-creator.js";
 import { Comment } from "../models/comment.js";
 import { authService } from "../services/auth.js";
 
-function setCoctailInfo(coctailId) {
-  const coctail = coctailDb.getCoctail(coctailId);
+async function setCoctailInfo(coctailId) {
+  const coctail = await coctailDb.getCoctail(coctailId);
   document.getElementById("coctail-name").innerText = coctail.name; 
   document.getElementById("coctail-description").innerText = coctail.description; 
   document.getElementById("coctail-value").innerText = coctail.value;
   document.getElementById("coctail-author").innerText = coctail.addedBy;
+
+  if (await authService.isAuthorized()) {
+    if ("marks" in coctail && authService.user.uid in coctail.marks) {
+      const stars = document.getElementsByClassName("fa-star");
+      stars[5 - coctail.marks[authService.user.uid]].click();
+    }
+  }
+
+  document.getElementById("coctail-rating").innerText =
+      getCoctailRating(coctail).toFixed(2);
+  
   const ingredientsList = document.getElementById("ingredients-list");
   for (const ingredient of coctail.ingredients) {
     let listItem = document.createElement("li");
@@ -36,9 +47,13 @@ function setCoctailInfo(coctailId) {
   })
 }
 
-function setCommentsInfo(coctailId) {
+async function setCommentsInfo(coctailId) {
   const addCommentBtn = document.getElementById("add-comment-btn");
-  addCommentBtn.addEventListener("click", () => {
+  addCommentBtn.addEventListener("click", async () => {
+    if (!await authService.isAuthorized()) {
+      alert("Please, log in to leave comments!");
+      return;
+    }
     const textArea = document.getElementById("comment-textarea");
     let comment = new Comment(authService.user.email, textArea.value);
     textArea.value = "";
@@ -65,8 +80,37 @@ return `<li class="comments-list-item">
 </li>`;
 }
 
+function setRatingOnClick(coctailId) {
+  const stars = [...document.getElementsByClassName("fa-star")];
+  stars.map((star) => {
+    star.addEventListener("click", async () => {
+      if (!await authService.isAuthorized()) {
+        alert("Please, log in to rate coctails!");
+        return;
+      }
+      let i = stars.indexOf(star);
+      let input = document.getElementsByClassName('rating-input');
+      input[i].checked = true;
+      coctailDb.addRating(coctailId, authService.user.uid, 5 - i);
+      for (let j = 0; j < 5; j++) {
+        stars[j].classList.remove("far", "fa");
+        if (j >= i)
+          stars[j].classList.add("fa");
+        else {
+          stars[j].classList.add("far");
+        }
+      }
+
+      document.getElementById("coctail-rating").innerText =
+        getCoctailRating(await coctailDb.getCoctail(coctailId)).toFixed(2);
+    });
+  });
+}
+
+
 export function setDescriptionEventListeners() {
   const coctailId = getURLParam("id");
+  setRatingOnClick(coctailId);
   setCoctailInfo(coctailId);
   setCommentsInfo(coctailId);
 }

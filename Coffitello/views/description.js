@@ -5,7 +5,7 @@ export const descriptionSection = `
   <ul id="ingredients-list">
   </ul>
   <div id="down-info">
-    <p>Rating: <span id="coctail-rating">4.1</span></p>
+    <p>Rating: <span id="coctail-rating"></span></p>
     <p>Author: <span id="coctail-author"></span></p>
   </div>
 </aside>
@@ -17,11 +17,16 @@ export const descriptionSection = `
   </div>
   <p id="coctail-name">Coctail</p>
   <div class="grid-item-rating">
-    <span class="fa fa-star checked" aria-hidden="true"></span>
-    <span class="fa fa-star" aria-hidden="true"></span>
-    <span class="fa fa-star" aria-hidden="true"></span>
-    <span class="fa fa-star" aria-hidden="true"></span>
-    <span class="fa fa-star" aria-hidden="true"></span>
+    <input class="rating-input" id="star-rating-5" type="radio" name="rating" value="5">
+    <label class="star-rating-icon far fa-star" for="star-rating-5" aria-hidden="true"></label>
+    <input class="rating-input" id="star-rating-4" type="radio" name="rating" value="4">
+    <label class="star-rating-icon far fa-star" for="star-rating-4" aria-hidden="true"></label>
+    <input class="rating-input" id="star-rating-3" type="radio" name="rating" value="3">
+    <label class="star-rating-icon far fa-star" for="star-rating-3" aria-hidden="true"></label>
+    <input class="rating-input" id="star-rating-2" type="radio" name="rating" value="2">
+    <label class="star-rating-icon far fa-star" for="star-rating-2" aria-hidden="true"></label>
+    <input class="rating-input" id="star-rating-1" type="radio" name="rating" value="1">
+    <label class="star-rating-icon far fa-star" for="star-rating-1" aria-hidden="true"></label>
   </div>
   <p id="coctail-description">Coctail description</p>
 </article>

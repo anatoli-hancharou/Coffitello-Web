@@ -1,5 +1,6 @@
 import { db } from "../scripts/firebaseInit.js";
-import { ref, set, push, onChildAdded } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+import { ref, set, push, onChildAdded, onChildChanged } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+import { authService } from "./auth.js";
 
 class CoctailDb {
   constructor() {
@@ -18,11 +19,12 @@ class CoctailDb {
   }
 
   async getCoctails() {
-    await initializeCoctails.then(result => result)
+    await initializeCoctails.then(result => result);
     return this.coctails;
   }
 
-  getCoctail(id) {
+  async getCoctail(id) {
+    await initializeCoctails.then(result => result);
     return this.coctails.filter(coctail => coctail.id === id)[0];
   }
 
@@ -40,6 +42,10 @@ class CoctailDb {
       addCommentElement(data.val().author, data.val().date, data.val().text);
     });
   }
+
+  addRating(coctailId, userId, rating) {
+    set(ref(db, `coctails/${coctailId}/marks/${userId}`), rating);
+  }
 }
 
 const initializeCoctails = new Promise(resolve => {
@@ -47,6 +53,11 @@ const initializeCoctails = new Promise(resolve => {
     coctailDb.coctails.push({ ...data.val(), id: data.key });
     resolve();
   })
+});
+
+onChildChanged(ref(db, 'coctails/'), (data) => {
+  coctailDb.coctails.filter((coctail) => coctail.id === data.key)[0].marks =
+    data.val().marks;
 });
 
 export const coctailDb = new CoctailDb();

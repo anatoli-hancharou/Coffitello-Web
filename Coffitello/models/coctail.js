@@ -8,8 +8,4 @@ export class Coctail {
     this.createDate = new Date();
     this.marks = [];
   }
-
-  getRating() {
-    return this.marks.reduce((a, b) => a + b, 0) / this.marks.length;
-  }
 }
