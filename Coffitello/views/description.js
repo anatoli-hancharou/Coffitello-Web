@@ -11,7 +11,6 @@ export const descriptionSection = `
 </aside>
 <article id="coctail-info-block">
   <button type="button" id="coctail-info-btn"></button>
-  <button type="button" id="mark-favourite-btn"></button>
   <div class="coctail-image-block">
     <img src="icons/drink.png" alt="coctail-cup">
   </div>

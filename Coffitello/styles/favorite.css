@@ -6,6 +6,36 @@ a {
   display: block;
 }
 
+/* Animation */
+@keyframes dissapearAnimation{
+  0%{
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+  100%{
+    display: none;
+    opacity: 0;
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+}
+
+.dissapear {
+    animation-name: dissapearAnimation;
+    animation-duration: 1500ms;
+    animation-fill-mode: forwards;
+}
+/*  */
+
+.coctail-ingredient {
+  position: absolute;
+  left: 30px;
+  top: 38px;
+  height: 66%;
+  width: 54%;
+}
+
 #favorites-section {
   margin: 0 auto;
   min-height: 300px;
@@ -30,7 +60,14 @@ a {
 }
 
 .coctail-image-block {
+  position: relative;
+  height: 100%;
   width: auto;
+}
+
+.coctail-image-block img {
+  position: inherit;
+  z-index: 10;
 }
 
 .favorite-coctail-name {
@@ -46,7 +83,6 @@ a {
   font-family: var(--italic-font);
   font-size: var(--favorite-block-font-size);
   text-align: center;
-  height: 80px;
   overflow: hidden;
 }
 
@@ -58,7 +94,7 @@ a {
   width: 80%;
 }
 
-.mark-favourite-btn {
+#mark-favourite-btn {
   position: absolute;
   width: 40px;
   height: 40px;
@@ -67,6 +103,11 @@ a {
   background-color: var(--primary-background-color);
   right: 15px;
   background-image: url( '../icons/heart.png' );
+  transition: all 400ms ease;
+}
+
+#mark-favourite-btn:hover {
+  transform: scale(1.1);
 }
 
 @media only screen and (max-device-width : 550px) {
@@ -94,13 +135,21 @@ a {
   }
 
   .favorite-coctail-desc {
-    height: 150px;
+    min-height: 100px;
   }
 
-  .mark-favourite-btn {
+  #mark-favourite-btn {
     width: 90px;
     height: 90px;
     background-size: 90px 90px;
     right: 15px;
+  }
+
+  .coctail-ingredient {
+    position: absolute;
+    left: 60px;
+    top: 75px;
+    height: 69%;
+    width: 54%;
   }
 }

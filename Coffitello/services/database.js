@@ -1,5 +1,5 @@
 import { db } from "../scripts/firebaseInit.js";
-import { ref, set, push, onChildAdded, onChildChanged } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+import { ref, set, push, remove, onChildAdded, onChildChanged,onValue } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
 import { authService } from "./auth.js";
 
 class CoctailDb {
@@ -46,6 +46,22 @@ class CoctailDb {
   addRating(coctailId, userId, rating) {
     set(ref(db, `coctails/${coctailId}/marks/${userId}`), rating);
   }
+
+  async getFavorites(userId) {
+    return await initializeFavorites(userId).then(result => result);
+  }
+
+  addFavorite(coctailId, userId) {
+    push(ref(db, 'favorites/' + userId), {
+      coctailId: coctailId
+    });
+  }
+
+  async removeFavorite(coctailId, userId) {
+    let favorites = await initializeFavorites(userId).then(result => result);
+    let favoriteCoctail = favorites.filter(f => f.coctailId === coctailId)[0];
+    remove(ref(db, 'favorites/' + userId + '/' + favoriteCoctail.id));
+  }
 }
 
 const initializeCoctails = new Promise(resolve => {
@@ -53,6 +69,18 @@ const initializeCoctails = new Promise(resolve => {
     coctailDb.coctails.push({ ...data.val(), id: data.key });
     resolve();
   })
+});
+
+const initializeFavorites = (userId) => new Promise(resolve => {
+  onValue(ref(db, 'favorites/' + userId), (snapshot) => {
+    let favorites = [];
+    snapshot.forEach((childSnapshot) => {
+      const childKey = childSnapshot.key;
+      const childData = childSnapshot.val();
+      favorites.push({...childData, id: childKey})
+    });
+    resolve(favorites);
+  });
 });
 
 onChildChanged(ref(db, 'coctails/'), (data) => {

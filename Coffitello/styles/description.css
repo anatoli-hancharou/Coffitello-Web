@@ -85,10 +85,10 @@
 
 .coctail-ingredient {
   position: absolute;
-  left: 32px;
+  left: 30px;
   top: 39px;
   height: 65%;
-  width: 53%;
+  width: 54%;
 }
 
 #mark-favourite-btn, #coctail-info-btn {

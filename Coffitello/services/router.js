@@ -7,7 +7,7 @@ const rootDiv = document.getElementById('root');
 
 export async function changeContent(pathname) {
   pathname = getPathWithoutParams(pathname);
-  if (pathname in requireAuthRoutes) {
+  if (requireAuthRoutes.includes(pathname)) {
     let isAuth = await authService.isAuthorized();
     if (!isAuth) {
       onNavigate('/404');
@@ -87,4 +87,6 @@ function removeEventListeners() {
 
 window.onpopstate = () => changeContent(window.location.pathname);
 
-window.onload = () => changeContent(window.location.pathname);
+window.addEventListener("load", () => {
+  changeContent(window.location.pathname);
+})

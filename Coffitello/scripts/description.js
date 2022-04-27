@@ -107,10 +107,36 @@ function setRatingOnClick(coctailId) {
   });
 }
 
+async function setFavoriteInfo(coctailId) {
+  if (!await authService.isAuthorized()) {
+    return;
+  }
+  const infoBlock = document.getElementById("coctail-info-block");
+  let favoriteBtn = document.createElement("button");
+  infoBlock.appendChild(favoriteBtn);
+  favoriteBtn.setAttribute("id", "mark-favourite-btn");
+  let favorites = await coctailDb.getFavorites(authService.user.uid);
+  favoriteBtn.style.backgroundImage = favorites.some(
+    (fav) => fav.coctailId === coctailId)
+    ? "url('../icons/heart.png')"
+    : "url('../icons/empty-heart.png')";
+  favoriteBtn.addEventListener("click", async () => {
+    let favorites = await coctailDb.getFavorites(authService.user.uid);
+    if (favorites.some(fav => fav.coctailId === coctailId)) {
+      coctailDb.removeFavorite(coctailId, authService.user.uid);
+      favoriteBtn.style.backgroundImage = "url('../icons/empty-heart.png')";
+    }
+    else {
+      coctailDb.addFavorite(coctailId, authService.user.uid);
+      favoriteBtn.style.backgroundImage = "url('../icons/heart.png')";
+    }
+  });
+}
 
 export function setDescriptionEventListeners() {
   const coctailId = getURLParam("id");
   setRatingOnClick(coctailId);
   setCoctailInfo(coctailId);
   setCommentsInfo(coctailId);
+  setFavoriteInfo(coctailId);
 }
