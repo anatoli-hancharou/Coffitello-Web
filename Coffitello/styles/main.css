@@ -221,5 +221,14 @@
       font-size: 2.5em;
       padding: 20px;
     }
+
+    body.swal2-toast-shown .swal2-container {
+      width: 750px !important;
+    }
+
+    .swal2-popup {
+      font-size: 2.2em !important;
+    }
+
   }
   

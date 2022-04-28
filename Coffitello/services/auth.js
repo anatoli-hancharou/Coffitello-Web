@@ -1,6 +1,7 @@
 import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
 import { onNavigate } from "./router.js";
 import { auth } from "../scripts/firebaseInit.js";
+import { Toast } from "./alert.js";
 
 class AuthService {
   constructor() {
@@ -8,23 +9,39 @@ class AuthService {
   }
 
   async isAuthorized() {
-    return await checkAuth.then(result => result != null)
+    let auth = this;
+    return await checkAuth.then(() => {
+      return auth.user != null;
+    })
   }
  
   signIn(email, password) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         onNavigate('/');
-        const user = userCredential.user;
+        Toast.fire({
+          icon: 'success',
+          title: 'Signed in successfully'
+        });
+        this.user = userCredential.user;
       })
       .catch((error) => {
         var errorCode = error.code;
         if (errorCode == "auth/user-not-found") {
-          alert("We can't find user with this email address...");
-        } else if (errorCode == "auth/wrong-password"){
-          alert("Password is wrong. Please, try again.");
+          Toast.fire({
+            icon: 'error',
+            title: "User not found!"
+          });
+        } else if (errorCode == "auth/wrong-password") {
+          Toast.fire({
+            icon: 'error',
+            title: 'Password is wrong.\n Please, try again.'
+          });
         } else if (errorCode == "auth/invalid-email") {
-          alert("The email address is not valid.");
+          Toast.fire({
+            icon: 'error',
+            title: "The email address is not valid!"
+          });
         }
       });
   }
@@ -33,16 +50,25 @@ class AuthService {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         onNavigate('/');
-        const user = userCredential.user;
+        this.user = userCredential.user;
       })
       .catch((error) => {
         var errorCode = error.code;
         if (errorCode == "auth/weak-password") {
-          alert("The password is too weak.");
+          Toast.fire({
+            icon: 'info',
+            title: "The password is too weak!"
+          });
         } else if (errorCode == "auth/email-already-in-use"){
-          alert("Oops... This email is already in use.");
+          Toast.fire({
+            icon: 'info',
+            title: "Oops... This email is already in use."
+          });
         } else if (errorCode == "auth/invalid-email") {
-          alert("The email address is not valid.");
+          Toast.fire({
+            icon: 'info',
+            title: "The email address is not valid."
+          });
         }
       });
   }
@@ -50,6 +76,7 @@ class AuthService {
   signOut() {
     signOut(auth).then(() => {
       onNavigate('/');
+      authService.user = null;
     }).catch((error) => {
       console.log(error.message)
     });

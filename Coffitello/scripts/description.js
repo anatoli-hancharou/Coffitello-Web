@@ -3,6 +3,7 @@ import { coctailDb } from "../services/database.js";
 import { createIngredinets } from "../services/image-creator.js";
 import { Comment } from "../models/comment.js";
 import { authService } from "../services/auth.js";
+import { Toast } from "../services/alert.js";
 
 async function setCoctailInfo(coctailId) {
   const coctail = await coctailDb.getCoctail(coctailId);
@@ -51,7 +52,10 @@ async function setCommentsInfo(coctailId) {
   const addCommentBtn = document.getElementById("add-comment-btn");
   addCommentBtn.addEventListener("click", async () => {
     if (!await authService.isAuthorized()) {
-      alert("Please, log in to leave comments!");
+      Toast.fire({
+        icon: 'info',
+        title: "Please, log in to leave comments!"
+      });
       return;
     }
     const textArea = document.getElementById("comment-textarea");
@@ -85,7 +89,10 @@ function setRatingOnClick(coctailId) {
   stars.map((star) => {
     star.addEventListener("click", async () => {
       if (!await authService.isAuthorized()) {
-        alert("Please, log in to rate coctails!");
+        Toast.fire({
+          icon: 'info',
+          title: "Please, log in to rate coctails!"
+        });
         return;
       }
       let i = stars.indexOf(star);

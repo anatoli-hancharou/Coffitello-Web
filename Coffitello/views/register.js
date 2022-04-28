@@ -10,7 +10,7 @@ export const registerSection = `
         <input type="password" placeholder="Enter Password" name="password" id="password-field" required>
       </div>
       <div class="actions">
-        <button type="submit" id="register-btn">Register</button>
+        <button type="submit" id="register-btn" class="action-button">Register</button>
       </div>
     </div>
   </form>

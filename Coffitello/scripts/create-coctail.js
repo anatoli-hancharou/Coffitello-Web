@@ -5,6 +5,7 @@ import { authService } from "../services/auth.js";
 import { coctailDb } from "../services/database.js";
 import { onNavigate } from "../services/router.js";
 import { createIngredinets } from "../services/image-creator.js";
+import { Toast } from "../services/alert.js";
 
 const currentValues = [];
 
@@ -39,7 +40,10 @@ function setIngredientOnClickEvent() {
         currentValues.push(ingredientValue);
         addIngredientValue(ingredientValue);
       } else {
-        alert("Can't add more than 5 ingredients.");
+        Toast.fire({
+          icon: 'warning',
+          title: "Can't add more than 5 ingredients."
+        });
       }
     })
   );
@@ -106,7 +110,10 @@ function submitCreateCoctailForm(event) {
   let value = document.getElementById('drink-value').valueAsNumber;
   let addedBy = authService.user.email;
   if (currentValues.length == 0) {
-    alert("Please, select at least one ingredient for your coctail.");
+    Toast.fire({
+      icon: 'warning',
+      title: "Please, select at least one ingredient"
+    });
     return;
   }
 
@@ -129,19 +136,31 @@ function submitCreateCoctailForm(event) {
 
 function isInputValid(name, description, value, ingredientsSum) {
   if (name.length < 2) {
-    alert("Name should not be shorten than 2 symbols.");
+    Toast.fire({
+      icon: 'info',
+      title: "Name should not be shorten than 2 symbols"
+    });
     return false;
   }
   if (description.length < 5) {
-    alert("Description should not be shorten than 5 symbols.");
+    Toast.fire({
+      icon: 'info',
+      title: "Description should not be shorten than 5 symbols"
+    });
     return false;
   }
   if (value < 50 || value > 2000) {
-    alert("Value of your coctail should be between 50 and 2000 ml.");
+    Toast.fire({
+      icon: 'info',
+      title: "Value of your coctail should be between 50 and 2000 ml"
+    });
     return false;
   }
   if (ingredientsSum != 100) {
-    alert(`Sum of the values of each ingredient should be equal to 100%\nCurrent sum is ${ingredientsSum}%`);
+    Toast.fire({
+      icon: 'info',
+      title: `Sum of the values of each ingredient should be equal to 100%\nCurrent sum is ${ingredientsSum}%`
+    });
     return false;
   }
 
