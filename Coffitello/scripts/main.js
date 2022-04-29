@@ -1,5 +1,6 @@
 import { onNavigate } from "../services/router.js";
 import { authService } from "../services/auth.js";
+import { getCookie, setCookie } from "../services/cookie.js";
 
 function setEventListeners() {
   const catalogLink = document.querySelector("#catalog-link a");
@@ -8,6 +9,7 @@ function setEventListeners() {
   const loginLink = document.querySelector("#login-link a");
   const logoutLink = document.querySelector("#logout-link a");
   const barLink = document.querySelector("#bar-link a");
+  const changeMode = document.querySelector("#switch-theme")
 
   createLink.addEventListener("click", (e) => {
     onNavigate("/create");
@@ -38,6 +40,28 @@ function setEventListeners() {
     onNavigate("/");
     e.preventDefault();
   });
+
+  changeMode.addEventListener("click", e => {
+    if (changeMode.classList.contains("light")) {
+      setCookie("mode", "dark", 7);
+      changeMode.classList.remove("light");
+      changeMode.firstChild.classList.add("fa-sun");
+      changeMode.firstChild.classList.remove("fa-moon");
+      document.documentElement.style.setProperty("--primary-background-color", "#55504c");
+      document.documentElement.style.setProperty("--primary-text-color", "#b9a06d");
+    } else {
+      setCookie("mode", "light", 7);
+      changeMode.classList.add("light");
+      changeMode.firstChild.classList.remove("fa-sun");
+      changeMode.firstChild.classList.add("fa-moon");
+      document.documentElement.style.setProperty("--primary-background-color", "#F9F4EF");
+      document.documentElement.style.setProperty("--primary-text-color", "#716040");
+    }
+  });
+
+  if (getCookie("mode") == "dark") {
+    changeMode.click();
+  }
 }
 
 export function getURLParam(param) {
