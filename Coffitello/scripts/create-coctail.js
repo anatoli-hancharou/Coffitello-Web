@@ -25,20 +25,25 @@ function setIngredientOnClickEvent() {
   let ingredientsItems = document.querySelectorAll(".choose-ingredient-list-item");
   ingredientsItems.forEach(element =>
     element.addEventListener("click", (e) => { 
-      let ingredientValue = e.currentTarget.innerText;
+      let ingredientValue = e.currentTarget.innerText.trim();
 
       if (currentValues.includes(ingredientValue)) {
         currentValues.splice(currentValues.indexOf(ingredientValue), 1);
         e.currentTarget.classList.remove("selected");
-        var elem = document.getElementById("ingredients-values-list");
-        elem.removeChild(Array.from(elem.childNodes).find(v => v.innerText == ingredientValue));
+        let elem = document.getElementById("ingredients-values-list");
+        let valueElement = Array.from(elem.childNodes).find(v => v.innerText == ingredientValue);
+        valueElement.classList.add("disappear");
+        setTimeout(() => {
+          elem.removeChild(valueElement);
+          refreshImage();
+        }, "800");
         return;
       }
      
       if (currentValues.length < 5) {
         e.currentTarget.classList.add("selected");
-        currentValues.push(ingredientValue);
-        addIngredientValue(ingredientValue);
+        currentValues.push(ingredientValue.trim());
+        addIngredientValue(ingredientValue, element.style.borderLeftColor);
       } else {
         Toast.fire({
           icon: 'warning',
@@ -49,9 +54,10 @@ function setIngredientOnClickEvent() {
   );
 }
 
-function addIngredientValue(ingredient) {
+function addIngredientValue(ingredient, borderColor) {
   let ingredientsValuesList = document.querySelector("#ingredients-values-list");
   let li = document.createElement("li");
+  li.style.borderLeftColor = borderColor;
   li.classList.add("list-item", "value-list-item");
   li.innerText = ingredient;
   let input = document.createElement("input");
@@ -72,6 +78,7 @@ function addCategories() {
   let categoryList = document.querySelector("#choose-category-list");
   for (const category of Object.keys(ingredients)) {
     let li = document.createElement("li");
+    li.style.borderLeftColor = ingredients[category].color;
     li.classList.add("list-item", "choose-category-list-item");
     let a = document.createElement("span");
     a.innerText = category;
@@ -83,15 +90,16 @@ function addCategories() {
 function addIngredients(category) {
   let ingredientsList = document.querySelector("#choose-ingredient-list");
   ingredientsList.innerHTML = "";
-  for (const ingredient of ingredients[category]) {
+  for (const ingredient of ingredients[category].ingredients) {
     let li = document.createElement("li");
+    li.style.borderLeftColor = ingredients[category].color;
     li.classList.add("list-item", "choose-ingredient-list-item");
-    if (currentValues.includes(ingredient)) {
+    if (currentValues.includes(ingredient.trim())) {
       li.classList.add("selected");
     }
-    let a = document.createElement("span");
-    a.innerText = ingredient;
-    li.appendChild(a);
+    let span = document.createElement("span");
+    span.innerText = ingredient;
+    li.appendChild(span);
     ingredientsList.appendChild(li);
   }
 }

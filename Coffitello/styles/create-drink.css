@@ -4,6 +4,44 @@
   --create-block-border-radius: 5px;
 }
 
+/* Animation */
+@keyframes appearAnimation{
+  from {
+    opacity: 0;
+    margin-left: 40%;
+  }
+  to {
+    display: none;
+    opacity: 1;
+    margin-left: 0%;
+  }
+}
+
+.list-item {
+    animation-name: appearAnimation;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes disappearAnimation{
+  from {
+    opacity: 1;
+    margin-left: 0%;
+  }
+  to {
+    display: none;
+    opacity: 0;
+    margin-left: 40%;
+  }
+}
+
+.disappear {
+    animation-name: disappearAnimation;
+    animation-duration: 800ms;
+    animation-fill-mode: forwards;
+}
+/*  */
+
 .create-drink-form {
   font-family: var(--primary-text-font);
   margin: 0 auto;
@@ -44,6 +82,9 @@
   display: flex;
   justify-content: space-between;
   padding: 4px;
+  border-left-width: 7px;
+  border-left-style: solid;
+  margin-bottom: 2px;
   border-radius: var(--create-block-border-radius);
   font-size: var(--create-block-font-size-sm);
 }
@@ -229,7 +270,9 @@ input[type='number']::-webkit-outer-spin-button {
   }
 
   .list-item {
+    border-left-width: 17px;
     margin-bottom: 10px;
+    font-size: 2.5em;
   }
 
   .ingredient-value {
