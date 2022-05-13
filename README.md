@@ -22,9 +22,5 @@ by others
 - An ability to rate cocktails (1-5 stars rating system) and leave a comment
 
 ### [Coctaillio main](https://coctaillio.web.app)
-- [Create page](https://coctaillio.web.app/create.html)
-- [Description page](https://coctaillio.web.app/description.html)
-- [Favorite page](https://coctaillio.web.app/favorite.html)
-- [Login page](https://coctaillio.web.app/login.html)
 
 ### Wireframe link: *https://www.figma.com/file/I7P8XK33gmkuGPebore8uL/Untitled?node-id=0%3A1*
