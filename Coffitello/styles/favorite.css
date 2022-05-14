@@ -46,7 +46,7 @@ a {
   margin: 20px 0;
   border-radius: var(--main-border-radius);
   box-shadow: 0 2px 25px rgba(0, 0, 0, 0.3);
-  transition: all 400ms ease;
+  transition: transform 400ms ease;
 }
 
 .favorites-list-item:hover {
@@ -103,11 +103,19 @@ a {
   background-color: var(--primary-background-color);
   right: 15px;
   background-image: url( '../icons/heart.png' );
-  transition: all 400ms ease;
+  transition: transform 400ms ease;
 }
 
 #mark-favourite-btn:hover {
   transform: scale(1.1);
+}
+
+#empty-message {
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+  font-family: var(--primary-text-font);
+  font-size: var(--favorite-block-font-size);
 }
 
 @media only screen and (max-device-width : 550px) {

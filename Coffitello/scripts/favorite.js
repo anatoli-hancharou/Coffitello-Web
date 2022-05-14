@@ -9,6 +9,10 @@ async function setFavoriteInfo() {
 
   const favoriteList = document.getElementById("favorites-list");
 
+  if (coctails.length === 0) {
+    setEmptyBarMessage();
+  }
+
   coctails.forEach(coctail => {
     let favoriteListItem = document.createElement("li");
     favoriteListItem.classList.add("favorites-list-item");
@@ -24,6 +28,9 @@ async function setFavoriteInfo() {
         favoriteListItem.classList.add("dissapear");
         setTimeout(() => {
           favoriteListItem.remove();
+          if (favoriteList.innerHTML.trim() === "") {
+            setEmptyBarMessage();
+          }
         }, "1300")
       }
     });
@@ -42,6 +49,14 @@ async function setFavoriteInfo() {
     favoriteListItem.appendChild(favoriteNode);
     favoriteList.appendChild(favoriteListItem);
   }); 
+}
+
+function setEmptyBarMessage() {
+  let favSec = document.getElementById("favorites-section");
+  let emptyMessage = document.createElement("h3");
+  emptyMessage.setAttribute("id", "empty-message");
+  emptyMessage.innerText = "Your bar is empty..."
+  favSec.replaceWith(emptyMessage);
 }
 
 function getFavoriteCoctailTemplate(name, description) {
