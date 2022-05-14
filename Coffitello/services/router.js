@@ -16,13 +16,16 @@ export async function changeContent(pathname) {
   }
   if (pathname in routes) {
     removeEventListeners();
-    rootDiv.innerHTML = routes[pathname];
+    let content = routes[pathname];
+    if (pathname in styles) {
+      let style = getStyle(pathname);
+      rootDiv.innerHTML = style.outerHTML;
+      rootDiv.innerHTML += content;
+    }
+    
     if (pathname in scripts) {
       addScript(pathname);
       setEventListeners(pathname);
-    }
-    if (pathname in styles) {
-      addStyle(pathname);
     }
   }
   else {
@@ -48,7 +51,7 @@ function getPathWithoutParams(path) {
 }
 
 async function addScript(pathname) {
-  var scriptSrc = scripts[pathname].script;    
+  let scriptSrc = scripts[pathname].script;    
   await loadScript(scriptSrc)
     .catch(error => console.log(`Error: ${error.message}`));
   rootDiv.dispatchEvent(new Event("contentChanged", {bubbles: true}));
@@ -67,12 +70,12 @@ function loadScript(src) {
   });
 }
 
-function addStyle(pathname) {
-  var styleSrc = styles[pathname];
-  var style = document.createElement("link");
+function getStyle(pathname) {
+  let styleSrc = styles[pathname];
+  let style = document.createElement("link");
   style.setAttribute("rel", "stylesheet");
   style.setAttribute("href", styleSrc);
-  rootDiv.prepend(style);
+ return style;
 }
 
 function setEventListeners(pathname) {
@@ -80,7 +83,7 @@ function setEventListeners(pathname) {
 }
 
 function removeEventListeners() {
-  for (var script in scripts) {
+  for (let script in scripts) {
     rootDiv.removeEventListener("contentChanged", scripts[script].eventListener);
   }
 }

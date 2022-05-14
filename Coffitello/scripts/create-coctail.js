@@ -7,7 +7,7 @@ import { onNavigate } from "../services/router.js";
 import { createIngredinets } from "../services/image-creator.js";
 import { Toast } from "../services/alert.js";
 
-const currentValues = [];
+let currentValues = [];
 
 function setCategoryOnClickEvent() {
   let categoryItems = document.querySelectorAll(".choose-category-list-item");
@@ -75,6 +75,7 @@ function addIngredientValue(ingredient, borderColor) {
 }
 
 function addCategories() {
+  currentValues = [];
   let categoryList = document.querySelector("#choose-category-list");
   for (const category of Object.keys(ingredients)) {
     let li = document.createElement("li");
