@@ -1,6 +1,5 @@
 import { db } from "../scripts/firebaseInit.js";
-import { ref, set, push, remove, onChildAdded, onChildChanged, onValue } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
-import { authService } from "./auth.js";
+import { ref, set, push, remove, onChildAdded, onChildChanged, onValue, off } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
 
 class CoctailDb {
   constructor() {
@@ -38,6 +37,7 @@ class CoctailDb {
 
   getComments(coctailId, addCommentElement) {
     const commentsRef = ref(db, 'post-comments/' + coctailId);
+    off(commentsRef);
     onChildAdded(commentsRef, (data) => {
       addCommentElement(data.val().author, data.val().date, data.val().text);
     });

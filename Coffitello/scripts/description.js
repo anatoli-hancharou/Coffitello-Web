@@ -60,6 +60,9 @@ async function setCommentsInfo(coctailId) {
     }
     const textArea = document.getElementById("comment-textarea");
     let comment = new Comment(authService.user.email, textArea.value);
+    if (!textArea.value.trim()) {
+      return;
+    }
     textArea.value = "";
     coctailDb.addComment(coctailId, comment);
   });

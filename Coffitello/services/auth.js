@@ -26,7 +26,7 @@ class AuthService {
         this.user = userCredential.user;
       })
       .catch((error) => {
-        var errorCode = error.code;
+        let errorCode = error.code;
         if (errorCode == "auth/user-not-found") {
           Toast.fire({
             icon: 'error',
@@ -53,7 +53,7 @@ class AuthService {
         this.user = userCredential.user;
       })
       .catch((error) => {
-        var errorCode = error.code;
+        let errorCode = error.code;
         if (errorCode == "auth/weak-password") {
           Toast.fire({
             icon: 'info',

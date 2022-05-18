@@ -19,7 +19,7 @@
   flex-direction: column;
   text-align: center;
   padding: 10px;
-  transition: all 400ms ease;
+  transition: transform 400ms ease;
 }
 
 .catalog-item:hover {
